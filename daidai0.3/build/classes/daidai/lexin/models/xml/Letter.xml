@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daidai.lexin.inter.ILetterFunction">
+
+    <!-- letter -->
+    
+    	<insert id="insertLetter">
+	    	insert into letter(
+		    	letter_id,
+		    	letter_mes,
+		    	letter_send,
+		    	letter_fromuserid,
+		    	letter_touserid,
+		    	letter_date
+	    	) 
+	    	values (
+		    	#{letter_id},
+		    	#{letter_mes},
+		    	#{letter_send},
+		    	#{letter_fromuserid},
+		    	#{letter_touserid},
+		    	#{letter_date}
+		    )
+   		</insert>
+    
+    	<delete id="deleteLetterByLetterID" parameterType="String">
+	    	delete from letter where letter_id = #{letter_id}
+	    </delete>
+	    
+	    <update id="updateLetter">
+	    	update letter set 
+	    	letter_mes = #{letter_mes},
+	    	letter_send = #{letter_send},
+	    	letter_fromuserid = #{letter_fromuserid},
+	    	letter_touserid = #{letter_touserid},
+	    	letter_date = #{letter_date}
+	    	where letter_id = #{letter_id}
+	    </update>
+    
+    	<select id="selectLetterByLetterID" parameterType="String" resultType="daidai.lexin.models.Letter">
+    		select * from `letter` where letter_id = #{letter_id}
+    	</select>
+    
+    <!-- letter -->
+
+</mapper>

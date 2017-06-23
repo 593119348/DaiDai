@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daidai.lexin.inter.IBlackFunction">
+
+    <!-- black -->
+    
+    	<insert id="insertBlack">
+	    	insert into black(
+		    	black_fromuserid,
+		    	black_touserid,
+		    	black_date
+	    	) 
+	    	values (
+		    	#{black_fromuserid},
+		    	#{black_touserid},
+		    	#{black_date}
+		    )
+   		</insert>
+    
+    	<delete id="deleteBlack">
+	    	delete from black where black_fromuserid = #{black_fromuserid} and black_touserid = #{black_touserid}
+	    </delete>
+    
+    	<select id="selectBlackByFromUserID" parameterType="String" resultType="daidai.lexin.models.Black">
+    		select * from `black` where black_fromuserid = #{black_fromuserid}
+    	</select>
+    	
+    	<select id="selectBlackByToUserID" parameterType="String" resultType="daidai.lexin.models.Black">
+    		select * from `black` where black_touserid = #{black_touserid}
+    	</select>
+    <!-- black -->
+
+</mapper>

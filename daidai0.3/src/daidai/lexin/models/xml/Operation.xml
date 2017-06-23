@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daidai.lexin.inter.IOperationFunction">
+
+    <!-- operation -->
+    
+    	<insert id="insertOperation">
+	    	insert into operation(
+		    	operation_id,
+		    	operation_mes,
+		    	operation_result,
+		    	operation_date,
+		    	user_id
+	    	) 
+	    	values (
+		    	#{operation_id},
+		    	#{operation_mes},
+		    	#{operation_result},
+		    	#{operation_date},
+		    	#{user_id}
+		    )
+   		</insert>
+    	
+    	<delete id="deleteOperationByID" parameterType="String">
+    		delete from operation where operation_id = #{operation_id}
+    	</delete>
+    	<delete id="deleteOperationByUserID" parameterType="String">
+	    	delete from operation where user_id = #{user_id}
+	    </delete>
+    
+    	<select id="selectOperationByUserID" resultType="daidai.lexin.models.Operation">
+    		select * from `operation` where user_id = #{user_id} order by operation_date ${order} limit #{min},#{max}
+    	</select>
+    
+    <!-- operation -->
+
+</mapper>

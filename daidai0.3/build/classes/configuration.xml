@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/daidai"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="daidai/lexin/models/xml/Black.xml"/>
+    <mapper resource="daidai/lexin/models/xml/BlackBox.xml"/>
+    <mapper resource="daidai/lexin/models/xml/Follow.xml"/>
+    <mapper resource="daidai/lexin/models/xml/Letter.xml"/>
+    <mapper resource="daidai/lexin/models/xml/Login.xml"/>
+    <mapper resource="daidai/lexin/models/xml/Operation.xml"/>
+    <mapper resource="daidai/lexin/models/xml/Task.xml"/>
+    <mapper resource="daidai/lexin/models/xml/TaskComment.xml"/>
+    <mapper resource="daidai/lexin/models/xml/TaskData.xml"/>
+    <mapper resource="daidai/lexin/models/xml/TaskReply.xml"/>
+    <mapper resource="daidai/lexin/models/xml/User.xml"/>
+    <mapper resource="daidai/lexin/models/xml/UserBInformation.xml"/>
+    <mapper resource="daidai/lexin/models/xml/UserData.xml"/>
+    <mapper resource="daidai/lexin/models/xml/UserDInformation.xml"/>
+    <mapper resource="daidai/lexin/models/xml/UserVInformation.xml"/>
+    <mapper resource="daidai/lexin/models/xml/WhiteBox.xml"/>
+  </mappers>
+</configuration>

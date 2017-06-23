@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daidai.lexin.inter.IWhiteBoxFunction">
+
+    <!-- whitebox -->
+    
+    	<insert id="insertWhiteBox">
+	    	insert into whitebox(
+		    	user_id,
+		    	whitebox_level,
+		    	whitebox_date,
+		    	whitebox_longtime
+	    	) 
+	    	values (
+		    	#{user_id},
+		    	#{whitebox_level},
+		    	#{whitebox_date},
+		    	#{whitebox_longtime}
+		    )
+   		</insert>
+    
+    	<delete id="deleteWhiteBoxByUserID" parameterType="String">
+	    	delete from whitebox where user_id = #{user_id}
+	    </delete>
+	    
+	    <update id="updateWhiteBox">
+	    	update whitebox set 
+	    	whitebox_level = #{whitebox_level},
+	    	whitebox_date = #{whitebox_date},
+	    	whitebox_longtime = #{whitebox_longtime}
+	    	where user_id = #{user_id}
+	    </update>
+    
+    	<select id="selectWhiteBoxByUserID" parameterType="String" resultType="daidai.lexin.models.WhiteBox">
+    		select * from `whitebox` where user_id = #{user_id}
+    	</select>
+    	<select id="selectAllWhiteBoxByLevel" resultType="daidai.lexin.models.WhiteBox">
+    		select * from `whitebox` where whitebox_level &lt; #{whitebox_level} order by whitebox_date ${order} limit #{min},#{max}
+    	</select>
+    
+    <!-- whitebox -->
+
+</mapper>

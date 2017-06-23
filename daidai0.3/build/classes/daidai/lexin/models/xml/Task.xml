@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daidai.lexin.inter.ITaskFunction">
+
+    <!-- task -->
+    
+    	<insert id="insertTask">
+	    	insert into task(
+		    	task_id,
+		    	task_mod,
+		    	task_mes,
+		    	task_value,
+		    	task_term,
+		    	task_countdown,
+		    	task_publishdate,
+		    	task_finishdate,
+		    	task_photo,
+		    	task_address,
+		    	user_id
+	    	) 
+	    	values (
+		    	#{task_id},
+		    	#{task_mod},
+		    	#{task_mes},
+		    	#{task_value},
+		    	#{task_term},
+		    	#{task_countdown},
+		    	#{task_publishdate},
+		    	#{task_finishdate},
+		    	#{task_photo},
+		    	#{task_address},
+		    	#{user_id}
+		    )
+   		</insert>
+    
+    	<delete id="deleteTaskByID" parameterType="String">
+	    	delete from task where task_id = #{task_id}
+	    </delete>
+	    
+	    <update id="updateTask">
+	    	update task set 
+	    	task_id = #{task_id},
+	    	task_mod = #{task_mod},
+	    	task_mes = #{task_mes},
+	    	task_value = #{task_value},
+	    	task_term = #{task_term},
+	    	task_countdown = #{task_countdown},
+	    	task_publishdate = #{task_publishdate},
+	    	task_finishdate = #{task_finishdate},
+	    	task_photo = #{task_photo},
+	    	task_address = #{task_address}
+	    	where user_id = #{user_id}
+	    </update>
+    
+    	<select id="selectTaskByID" parameterType="String" resultType="daidai.lexin.models.Task">
+    		select * from `task` where task_id = #{task_id}
+    	</select>
+    	
+    <!-- task -->
+
+</mapper>

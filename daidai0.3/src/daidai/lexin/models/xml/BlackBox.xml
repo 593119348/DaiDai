@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daidai.lexin.inter.IBlackBoxFunction">
+
+    <!-- blackbox -->
+    
+    	<insert id="insertBlackBox">
+	    	insert into blackbox(
+		    	user_id,
+		    	blackbox_reson,
+		    	blackbox_date,
+		    	blackbox_longtime
+	    	) 
+	    	values (
+		    	#{user_id},
+		    	#{blackbox_reson},
+		    	#{blackbox_date},
+		    	#{blackbox_longtime}
+		    )
+   		</insert>
+    
+    	<delete id="deleteBlackBoxByUserID" parameterType="String">
+	    	delete from blackbox where user_id = #{user_id}
+	    </delete>
+	    
+	    <update id="updateBlackBox">
+	    	update blackbox set 
+	    	blackbox_reson = #{blackbox_reson},
+	    	blackbox_date = #{blackbox_date},
+	    	blackbox_longtime = #{blackbox_longtime}
+	    	where user_id = #{user_id}
+	    </update>
+    
+    	<select id="selectBlackBoxByUserID" parameterType="String" resultType="daidai.lexin.models.BlackBox">
+    		select * from `blackbox` where user_id = #{user_id}
+    	</select>
+    
+    <!-- blackbox -->
+
+</mapper>

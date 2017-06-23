@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daidai.lexin.inter.ILoginFunction">
+
+    <!-- login -->
+    
+    	<insert id="insertLogin">
+	    	insert into login(
+		    	login_id,
+		    	login_ip,
+		    	login_address,
+		    	login_date,
+		    	user_id
+	    	) 
+	    	values (
+		    	#{login_id},
+		    	#{login_ip},
+		    	#{login_address},
+		    	#{login_date},
+		    	#{user_id}
+		    )
+   		</insert>
+    
+    	<delete id="deleteLoginByUserID" parameterType="String">
+	    	delete from login where user_id = #{user_id}
+	    </delete>
+    
+    	<select id="selectNewLoginByUserID" parameterType="String" resultType="daidai.lexin.models.Login">
+    		select * from `login` where user_id = #{user_id} and login_date=(select max(login_date) from login)
+    	</select>
+    	<select id="selectAllLoginByDate" parameterType="String" resultType="Integer">
+    		select count(login_id) from `login` where login_date between #{start} and #{end}
+    	</select>
+    	<select id="selectAllLogin" parameterType="Integer" resultType="daidai.lexin.models.Login">
+    		select * from `login` order by login_date desc limit #{min},#{max}
+    	</select>
+    	<select id="countLoginByUser" parameterType="Integer" resultType="java.util.HashMap">
+    		 select user_phone , count(*) AS count from login,user where user.user_id=login.user_id group by login.user_id order by count desc limit #{min},#{max}
+    	</select>
+    	<select id="countLoginByAddress" parameterType="Integer" resultType="java.util.HashMap">
+    		 select login_address , count(*) AS count from login group by login_address order by count desc limit #{min},#{max}
+    	</select>
+    <!-- login -->
+
+</mapper>

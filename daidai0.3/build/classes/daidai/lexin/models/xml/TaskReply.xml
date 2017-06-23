@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daidai.lexin.inter.ITaskReplyFunction">
+
+    <!-- task_reply -->
+    
+    	<insert id="insertTaskReply">
+	    	insert into task_reply(
+		    	task_reply_id,
+		    	task_reply_content,
+		    	task_reply_date,
+		    	task_comment_id
+	    	) 
+	    	values (
+		    	#{task_reply_id},
+		    	#{task_reply_content},
+		    	#{task_reply_date},
+		    	#{task_comment_id}
+		    )
+   		</insert>
+    
+    	<delete id="deleteTaskReplyByID" parameterType="String">
+	    	delete from task_reply where task_reply_id = #{task_reply_id}
+	    </delete>
+	    
+	    <update id="updateTaskReply">
+	    	update task_reply set 
+	    	task_reply_content = #{task_reply_content},
+	    	task_reply_date = #{task_reply_date},
+	    	task_comment_id = #{task_comment_id}
+	    	where task_reply_id = #{task_reply_id}
+	    </update>
+    
+    	<select id="selectTaskReplyByID" parameterType="String" resultType="daidai.lexin.models.TaskReply">
+    		select * from `task_reply` where task_reply_id = #{task_reply_id}
+    	</select>
+    	
+    <!-- task_reply -->
+
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daidai.lexin.inter.IUserVInformationFunction">
+
+ <!-- user_vinformation -->
+    
+    	<insert id="insertUserVInformation">
+	    	insert into user_vinformation(
+		    	user_vinformation_value,
+		    	user_vinformation_level,
+		    	user_vinformation_specialty,
+		    	user_vinformation_good,
+		    	user_vinformation_blacked,
+		    	user_vinformation_black,
+		    	user_vinformation_follow,
+		    	user_vinformation_followed,
+	    		user_id
+	    	) 
+	    	values (
+		    	#{user_vinformation_value},
+		    	#{user_vinformation_level},
+		    	#{user_vinformation_specialty},
+		    	#{user_vinformation_good},
+		    	#{user_vinformation_blacked},
+		    	#{user_vinformation_black},
+		    	#{user_vinformation_follow},
+		    	#{user_vinformation_followed},
+		    	#{user_id}
+		    )
+   		</insert>
+    
+    	<delete id="deleteUserVInformationByID" parameterType="String">
+	    	delete from user_vinformation where user_id = #{user_id}
+	    </delete>
+	    
+	    <update id="updateUserVInformation">
+	    	update user_vinformation set 
+	    	user_vinformation_value = #{user_vinformation_value},
+	    	user_vinformation_level = #{user_vinformation_level},
+	    	user_vinformation_specialty = #{user_vinformation_specialty},
+	    	user_vinformation_good = #{user_vinformation_good},
+	    	user_vinformation_blacked = #{user_vinformation_blacked},
+	    	user_vinformation_black = #{user_vinformation_black},
+	    	user_vinformation_follow = #{user_vinformation_follow},
+	    	user_vinformation_followed = #{user_vinformation_followed} 
+	    	where user_id = #{user_id}
+	    </update>
+    
+    	<select id="selectUserVInformationByUserID" parameterType="String" resultType="daidai.lexin.models.UserVInformation">
+    		select * from `user_vinformation` where user_id = #{user_id}
+    	</select>
+    	
+    	
+    <!-- user_vinformation -->
+</mapper>

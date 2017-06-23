@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daidai.lexin.inter.ITaskDataFunction">
+
+    <!-- task_data -->
+    
+    	<insert id="insertTaskData">
+	    	insert into task_data(
+		    	task_data_id,
+		    	task_data_bad,
+		    	task_data_good,
+		    	task_data_comment,
+		    	task_data_reply,
+		    	task_id
+	    	) 
+	    	values (
+		    	#{task_data_id},
+		    	#{task_data_bad},
+		    	#{task_data_good},
+		    	#{task_data_comment},
+		    	#{task_data_reply},
+		    	#{task_id}
+		    )
+   		</insert>
+    
+    	<delete id="deleteTaskDataByID" parameterType="String">
+	    	delete from task_data where task_id = #{task_id}
+	    </delete>
+	    
+	    <update id="updateTaskData">
+	    	update task_data set 
+	    	task_data_id = #{task_data_id},
+	    	task_data_bad = #{task_data_bad},
+	    	task_data_good = #{task_data_good},
+	    	task_data_comment = #{task_data_comment},
+	    	task_data_reply = #{task_data_reply}
+	    	where task_id = #{task_id}
+	    </update>
+    
+    	<select id="selectTaskDataByTaskID" parameterType="String" resultType="daidai.lexin.models.TaskData">
+    		select * from `task_data` where task_id = #{task_id}
+    	</select>
+    	
+    <!-- task_data -->
+
+</mapper>

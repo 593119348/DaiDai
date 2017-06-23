@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daidai.lexin.inter.IUserDataFunction">
+
+    <!-- user_data -->
+    
+    	<insert id="insertUserData">
+	    	insert into user_data(
+		    	user_data_accept,
+		    	user_data_relay,
+		    	user_data_finish,
+		    	user_data_unfinish,
+		    	user_data_publish,
+		    	user_data_accepted,
+		    	user_data_cost,
+		    	user_data_earm,
+		    	user_data_relayed,
+		    	user_data_overdue,
+		    	user_data_punishment,
+		    	user_data_good,
+		    	user_data_gooded,
+		    	user_data_bad,
+		    	user_data_baded,
+		    	user_data_comment,
+		    	user_data_reply,
+		    	user_id
+	    	) 
+	    	values (
+		    	#{user_data_accept},
+		    	#{user_data_relay},
+		    	#{user_data_finish},
+		    	#{user_data_unfinish},
+		    	#{user_data_publish},
+		    	#{user_data_accepted},
+		    	#{user_data_cost},
+		    	#{user_data_earm},
+		    	#{user_data_relayed},
+		    	#{user_data_overdue},
+		    	#{user_data_punishment},
+		    	#{user_data_good},
+		    	#{user_data_gooded},
+		    	#{user_data_bad},
+		    	#{user_data_baded},
+		    	#{user_data_comment},
+		    	#{user_data_reply},
+		    	#{user_id}
+		    )
+   		</insert>
+    
+    	<delete id="deleteUserDataByID" parameterType="String">
+	    	delete from user_data where user_id = #{user_id}
+	    </delete>
+	    
+	    <update id="updateUserData">
+	    	update user_data set 
+	    	user_data_accept = #{user_data_accept},
+	    	user_data_relay = #{user_data_relay},
+	    	user_data_finish = #{user_data_finish},
+	    	user_data_unfinish = #{user_data_unfinish},
+	    	user_data_publish = #{user_data_publish},
+	    	user_data_accepted = #{user_data_accepted},
+	    	user_data_cost = #{user_data_cost},
+	    	user_data_earm = #{user_data_earm},
+	    	user_data_relayed = #{user_data_relayed},
+	    	user_data_overdue = #{user_data_overdue},
+	    	user_data_punishment = #{user_data_punishment},
+	    	user_data_good = #{user_data_good},
+	    	user_data_gooded = #{user_data_gooded},
+	    	user_data_bad = #{user_data_bad},
+	    	user_data_baded = #{user_data_baded},
+	    	user_data_comment = #{user_data_comment},
+	    	user_data_reply = #{user_data_reply} 
+	    	where user_id = #{user_id}
+	    </update>
+    
+    	<select id="selectUserDataByUserID" parameterType="String" resultType="daidai.lexin.models.UserData">
+    		select * from `user_data` where user_id = #{user_id}
+    	</select>
+    	
+    <!-- user_data -->
+
+</mapper>

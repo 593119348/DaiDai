@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daidai.lexin.inter.IUserBInformationFunction">
+
+    <!-- user_binformation -->
+    
+    <insert id="insertUserBInformation">
+	    	insert into user_binformation(
+		    	user_binformation_photo,
+		    	user_binformation_sex,
+		    	user_binformation_name,
+		    	user_binformation_birth,
+		    	user_binformation_address,
+		    	user_binformation_introduction,
+		    	user_binformation_register,
+		    	user_id
+	    	) 
+	    	values (
+		    	#{user_binformation_photo},
+		    	#{user_binformation_sex},
+		    	#{user_binformation_name},
+		    	#{user_binformation_birth},
+		    	#{user_binformation_address},
+		    	#{user_binformation_introduction},
+		    	#{user_binformation_register},
+		    	#{user_id}
+		    )
+   		</insert>
+    
+    	<delete id="deleteUserBInformationByID" parameterType="String">
+	    	delete from user_binformation where user_id = #{user_id}
+	    </delete>
+	    
+	    <update id="updateUserBInformation">
+	    	update user_binformation set 
+	    	user_binformation_photo = #{user_binformation_photo},
+	    	user_binformation_sex = #{user_binformation_sex},
+	    	user_binformation_name = #{user_binformation_name},
+	    	user_binformation_birth = #{user_binformation_birth},
+	    	user_binformation_address = #{user_binformation_address},
+	    	user_binformation_introduction = #{user_binformation_introduction}
+	    	where user_id = #{user_id}
+	    </update>
+    
+    	<select id="selectUserBInformationByID" parameterType="String" resultType="daidai.lexin.models.UserBInformation">
+    		select * from `user_binformation` where user_id = #{user_id}
+    	</select>
+    	
+    	<select id="selectAllUserBInformationByLevel" resultType="daidai.lexin.models.UserBInformation">
+    		select user_binformation.* from `user_binformation`,`whitebox` where user_binformation.user_id &lt;&gt; whitebox.user_id or whitebox.whitebox_level &lt; #{level} order by user_id ${order} limit #{min},#{max}
+    	</select>
+    	
+    <!-- user_binformation -->
+    
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daidai.lexin.inter.ITaskCommentFunction">
+
+    <!-- task_comment -->
+    
+    	<insert id="insertTaskComment">
+	    	insert into task_comment(
+		    	task_comment_id,
+		    	task_comment_content,
+		    	task_comment_date,
+		    	task_comment_good,
+		    	user_id,
+		    	task_id
+	    	) 
+	    	values (
+		    	#{task_comment_id},
+		    	#{task_comment_content},
+		    	#{task_comment_date},
+		    	#{task_comment_good},
+		    	#{user_id},
+		    	#{task_id}
+		    )
+   		</insert>
+    
+    	<delete id="deleteTaskCommentByID" parameterType="String">
+	    	delete from task_comment where task_comment_id = #{task_comment_id}
+	    </delete>
+	    
+	    <update id="updateTaskComment">
+	    	update task_comment set 
+	    	task_comment_content = #{task_comment_content},
+	    	task_comment_date = #{task_comment_date},
+	    	task_comment_good = #{task_comment_good},
+	    	user_id = #{user_id},
+	    	task_id = #{task_id}
+	    	where task_comment_id = #{task_comment_id}
+	    </update>
+    
+    	<select id="selectTaskCommentByID" parameterType="String" resultType="daidai.lexin.models.TaskComment">
+    		select * from `task_comment` where task_comment_id = #{task_comment_id}
+    	</select>
+    	
+    <!-- task_comment -->
+
+</mapper>
